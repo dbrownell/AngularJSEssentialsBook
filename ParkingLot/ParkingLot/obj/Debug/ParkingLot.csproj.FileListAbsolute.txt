@@ -1,0 +1,5 @@
+C:\AngularJSEssentialsBook\ParkingLot\ParkingLot\bin\ParkingLot.dll
+C:\AngularJSEssentialsBook\ParkingLot\ParkingLot\bin\ParkingLot.pdb
+C:\AngularJSEssentialsBook\ParkingLot\ParkingLot\obj\Debug\ParkingLot.csprojResolveAssemblyReference.cache
+C:\AngularJSEssentialsBook\ParkingLot\ParkingLot\obj\Debug\ParkingLot.dll
+C:\AngularJSEssentialsBook\ParkingLot\ParkingLot\obj\Debug\ParkingLot.pdb

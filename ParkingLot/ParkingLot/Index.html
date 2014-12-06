@@ -1,0 +1,71 @@
+﻿index.html – Parking Lot Application
+
+<!doctype html>
+<!-- Declaring the ng-app -->
+<html data-ng-app="parking">
+  <head>
+    <title data-ng-bind="appTitle"></title>
+    <!-- Importing the angular.js script -->
+     <!-- <script src="http:\\ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>-->
+      <script src="http:\\ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.js"></script>
+      <script>
+        // 1. Creating the module called parking
+          var parking = angular.module("parking", []);
+          // 2. Registering the parkingCtrl to the parking module
+          parking.controller("parkingCtrl", function ($scope) {
+              // Binding the car's array to the scope
+              $scope.appTitle = "[Packt] Parking";
+              $scope.cars = [
+                  { plate: '6MBV006' },
+                  { plate: '5BBM299' },
+                  { plate: '5AOJ230' }
+              ];
+              $scope.colors = ["White", "Black", "Blue", "Red", "Silver"];
+              // Binding the park function to the scope
+              $scope.park = function (car) {
+                  $scope.cars.push(window.angular.copy(car));
+                  delete $scope.car;
+              };
+          });
+      </script>
+       <style>
+      .selected {
+        background-color: #FAFAD2;
+      }
+    </style>
+
+  </head>
+  <!-- 3. Attaching the view to the parkingCtrl -->
+  <body data-ng-controller="parkingCtrl">
+      <h3 data-ng-bind="appTitle"></h3>
+    <div data-ng-show="cars.length > 0">
+    <table>
+        <thead>
+            <tr>
+                <th>Plate</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterating over the cars -->
+            <tr data-ng-class="{selected: car.selected}" data-ng-repeat="car in cars">
+                <!-- Showing the car's plate -->
+                <td><input type="checkbox" data-ng-model="car.selected"/></td>
+                <td><span data-ng-bind="car.plate"></span></td>
+                <td><span data-ng-bind="car.color"></span></td>
+            </tr>
+        </tbody>
+    </table>
+         </div>
+      <div data-ng-hide="cars.length > 0">
+          The parking lot is empty
+      </div>
+    <!-- 4. Binding the car object, with plate, to the scope -->
+      <input type="text" data-ng-model="car.plate"/>
+      <!-- Binding the park function to the click event -->
+      <select data-ng-model="car.color" data-ng-options="color for color in colors">
+       Pick a color
+      </select>
+    <button data-ng-click="park(car)" data-ng-disabled="!car.plate || !car.color">Park</button>
+  </body>
+</html>
